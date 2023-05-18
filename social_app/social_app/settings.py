@@ -138,4 +138,18 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
     'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
 ]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '630065228672021'
+SOCIAL_AUTH_FACEBOOK_SECRET = '73f8800bae153cb057bc6eec16ca41a4'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+
+SOCIAL_AUTH_TWITTER_KEY = 'ORJP6DS0NVbJSB37XBYLOUHcX'  # Twitter API Key
+SOCIAL_AUTH_TWITTER_SECRET = 'NSTuqxqJX34Cc1T400SDOybuly2cYk69vE3oQlngWzUyBjGDhS'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '365893047035-0nbn3ec3ooafbnkbgt06hqmq67pm6oeb.apps.googleusercontent.com'  # Google Client ID
+# Google Client Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
