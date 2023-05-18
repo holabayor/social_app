@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!t)$lm$sgj$blto#(atpo&teh_r(ly0iug)evq+j=24$hw+jxi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['socialmeet.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -134,5 +136,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'django.authentication.EmailAuthBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
 ]
