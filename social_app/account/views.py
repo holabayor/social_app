@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile
 
@@ -36,6 +37,7 @@ def dashboard(request):
 @login_required
 def edit(request):
     if request.method == 'POST':
+        print(request)
         user_form = UserEditForm(instance=request.user,
                                  data=request.POST)
         profile_form = ProfileEditForm(instance=request.user.profile,
@@ -45,6 +47,9 @@ def edit(request):
             # Save the new User nad Profile object
             user_form.save()
             profile_form.save()
+            messages.success(request, 'Profile updated successfully')
+        else:
+            messages.error(request, 'Error updating your profile')
 
     else:
         user_form = UserEditForm(instance=request.user)
