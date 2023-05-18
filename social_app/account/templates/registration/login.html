@@ -10,7 +10,7 @@
         Please try again.
     </p>
 {% else %}
-    <p>Log in below</p>
+    <p>Please, use the form below to log in</p>
 {% endif %}
 <div class="login-form">
     <form method='post'>
@@ -19,5 +19,10 @@
         <input type="hidden" name="next" value="{{ next }}" />
         <p><input type="submit" value="Login" /></p>
     </form>
+    <p>
+        <a href="{% url 'password_reset' %}">
+            Forgotten Password
+        </a>
+    </p>
 </div>
 {% endblock content %}
