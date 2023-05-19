@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def user_login(request):
+    # sourcery skip: extract-method, remove-unnecessary-else, swap-if-else-branches
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
