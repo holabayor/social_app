@@ -13,7 +13,7 @@ class Image(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
     url = models.URLField(max_length=200)
-    images = models.ImageField(upload_to='images/%Y/%m/%d')
+    image = models.ImageField(upload_to='images/%Y/%m/%d')
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True)
     user_like = models.ManyToManyField(settings.AUTH_USER_MODEL,

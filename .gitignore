@@ -136,3 +136,4 @@ GitHub.sublime-settings
 !.vscode/extensions.json 
 .history
 social_app/social_app/settings.py
+.vscode/launch.json
