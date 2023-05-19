@@ -8,7 +8,7 @@
     <a href="{{ image.image.url }}">
         <img src="{% thumbnail image.image 300x0 %}" class="image-detail" alt="{{ image.title }}" />
     </a>
-    {% with total_likes=images.users_like.count users_like=images.users_like.all %}
+    {% with total_likes=image.users_like.count users_like=image.users_like.all %}
         <div class="image-info">
             <div>
                 <span class="count">
@@ -26,7 +26,7 @@
             {{ image.description|linebreaks }}
         </div>
         <div class="image-likes">
-            {% for user in images.users_like.all %}
+            {% for user in image.users_like.all %}
                 <div>
                     {% if user.profile.photo %}
                         <img src="{{ user.profile.photo.url }}" />
@@ -76,7 +76,6 @@
                 let likeCount = document.querySelector('span.count .total');
                 let totalLikes = parseInt(likeCount.innerHTML);
                 likeCount.innerHTML = previousAction === 'like' ? totalLikes + 1 : totalLikes - 1;
-                alert(`like ${totalLikes} was clicked`)
             }
         })
     });
