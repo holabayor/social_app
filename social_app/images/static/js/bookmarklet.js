@@ -4,15 +4,15 @@ const minWidth = 250;
 const minHeight = 250;
 
 // load styles
-var head = document.getElementsByTagName('head')[0];
-var link = document.createElement('link');
+let head = document.getElementsByTagName('head')[0];
+let link = document.createElement('link');
 link.rel = 'stylesheet';
 link.type = 'text/css';
 link.href = styleUrl + '?r=' + Math.floor(Math.random() * 99999999999);
 head.appendChild(link);
 
 // load HTML
-var body = document.getElementsByTagName('body')['0'];
+let body = document.getElementsByTagName('body')['0'];
 boxHtml = `
     <div id="bookmarklet">
         <a href="#" id="close">&times;</a>
@@ -35,7 +35,7 @@ function bookmarkletLaunch() {
     bookmarklet.style.display = 'none';
   });
 
-  // find images in the DOM with the minimmum dimensions
+  // find images in the DOM with the minimum dimensions
   images = document.querySelectorAll(
     'img[src$=".jpg"], img[src$=".jpeg"], img[src$=".png"]'
   );

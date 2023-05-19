@@ -11,7 +11,7 @@ from .models import Image
 
 @login_required
 def image_create(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         # form is sent
         form = ImageCreateForm(data=request.POST)
         if form.is_valid():
@@ -20,34 +20,37 @@ def image_create(request):
             # assign current user to the item
             new_image.user = request.user
             new_image.save()
-            messages.success(request,
-                             'Image saved successfully')
+            messages.success(request, "Image saved successfully")
             # redirect to the new image detail view page
             return redirect(new_image.get_absolute_url())
     else:
         # build form with the data provided by the app via GET
         form = ImageCreateForm(data=request.GET)
-        return render(request, 'images/image/create.html', {'section': 'images', 'form': form})
+        return render(
+            request, "images/image/create.html", {"section": "images", "form": form}
+        )
 
 
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
-    return render(request,  'images/image/detail.html', {'section': 'images', 'image': image})
+    return render(
+        request, "images/image/detail.html", {"section": "images", "image": image}
+    )
 
 
 @login_required
 @require_POST
 def image_like(request):
-    image_id = request.POST.get('id')
-    action - request.POST.get('action')
+    image_id = request.POST.get("id")
+    action = request.POST.get("action")
     if image_id and action:
         try:
             image = Image.objects.get(id=image_id)
-            if action == 'like':
+            if action == "like":
                 image.user_like.add(request.user)
             else:
                 image.user_like.remove(request.user)
-            return JsonResponse({'status': 'ok'})
+            return JsonResponse({"status": "ok"})
         except Image.DoesNotExist:
-            pass
-    return JsonResponse({'status': 'error'})
+            print("error")
+    return JsonResponse({"status": "error"})
