@@ -1,5 +1,5 @@
 (function () {
-  if (!!window.bookmarklet) {
+  if (!window.bookmarklet) {
     bookmarklet_js = document.body.appendChild(
       document.createElement('script')
     );
