@@ -11,11 +11,11 @@
         <img src="{% thumbnail user.profile.photo 180x180 %}" class="user-detail" alt="profile-photo"/>
     </div>
     {% with total_followers=user.followers.count %}
-        <span class="total">
-            <span class="count">{{ total_followers }}</span>
+        <span class="count">
+            <span class="total">{{ total_followers }}</span>
             follower{{ total_followers|pluralize }}
         </span>
-        <a href="#" data-id="{% if request.user in user.followers.all %}un{% endif %}follow" class="follow button">
+        <a href="#" data-id="{{ user.id }}" data-action="{% if request.user in user.followers.all %}un{% endif %}follow" class="follow button">
             {% if request.user not in user.followers.all %}
                 Follow
             {% else %}
@@ -30,7 +30,7 @@
     
 
 {% block domready %}
-    let const = '{% url 'user_follow' %}';
+    const url = '{% url 'user_follow' %}';
     let options = {
         method: 'POST',
         headers: { 'X-CSRFToken': csrftoken },
